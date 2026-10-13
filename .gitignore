@@ -50,3 +50,5 @@ app.*.map.json
 # Nested Backend Repo
 /backend/
 
+# Local Interview & Presentation Prep
+INTERVIEW_GUIDE.md
