@@ -257,7 +257,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                       ),
                       ActionChip(
                         avatar: const Icon(Icons.public_rounded, size: 16),
-                        label: const Text('Render Cloud API'),
+                        label: const Text('Vercel Cloud API'),
                         onPressed: () =>
                             _changeBackendUrl(AppConfig.productionBaseUrl),
                       ),

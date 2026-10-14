@@ -17,7 +17,7 @@ class AppConfig {
   }
 
   /// Cloud API endpoint for production
-  static const String productionBaseUrl = 'https://taskflow-nestjs-api.onrender.com/api';
+  static const String productionBaseUrl = 'https://taskflow-nestjs-api.vercel.app/api';
 
   static const Duration connectTimeout = Duration(seconds: 15);
   static const Duration receiveTimeout = Duration(seconds: 15);
