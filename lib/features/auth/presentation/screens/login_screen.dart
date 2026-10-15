@@ -179,19 +179,44 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                 color: AppColors.priorityHigh.withOpacity(0.3),
                               ),
                             ),
-                            child: Row(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
-                                const Icon(Icons.error_outline_rounded,
-                                    color: AppColors.priorityHigh, size: 20),
-                                const SizedBox(width: 10),
-                                Expanded(
-                                  child: Text(
-                                    authState.errorMessage!,
-                                    style: const TextStyle(
-                                      color: AppColors.priorityHigh,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w500,
+                                Row(
+                                  children: [
+                                    const Icon(Icons.error_outline_rounded,
+                                        color: AppColors.priorityHigh, size: 20),
+                                    const SizedBox(width: 10),
+                                    Expanded(
+                                      child: Text(
+                                        authState.errorMessage!,
+                                        style: const TextStyle(
+                                          color: AppColors.priorityHigh,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
                                     ),
+                                  ],
+                                ),
+                                const SizedBox(height: 10),
+                                OutlinedButton.icon(
+                                  style: OutlinedButton.styleFrom(
+                                    foregroundColor: AppColors.primary,
+                                    side: const BorderSide(color: AppColors.primary),
+                                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    ref.read(authProvider.notifier).loginDemoOffline();
+                                    context.go('/dashboard');
+                                  },
+                                  icon: const Icon(Icons.play_circle_outline_rounded, size: 16),
+                                  label: const Text(
+                                    'Continue in Offline Demo Mode',
+                                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
                                   ),
                                 ),
                               ],
@@ -256,6 +281,21 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           text: 'Sign In',
                           isLoading: authState.isLoading,
                           onPressed: _handleLogin,
+                        ),
+                        const SizedBox(height: 12),
+                        OutlinedButton.icon(
+                          onPressed: () {
+                            ref.read(authProvider.notifier).loginDemoOffline();
+                            context.go('/dashboard');
+                          },
+                          icon: const Icon(Icons.bolt_rounded, size: 18),
+                          label: const Text('Instant Demo Mode (Offline)'),
+                          style: OutlinedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
                         ),
                       ],
                     ),

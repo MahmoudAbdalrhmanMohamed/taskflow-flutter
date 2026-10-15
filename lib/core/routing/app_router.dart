@@ -16,16 +16,17 @@ final routerProvider = Provider<GoRouter>((ref) {
   final authState = ref.watch(authProvider);
 
   return GoRouter(
-    initialLocation: '/dashboard',
+    initialLocation: '/login',
     refreshListenable: GoRouterRefreshStream(ref.watch(authProvider.notifier)),
     redirect: (context, state) {
+      final isLoggingIn = state.uri.path == '/login';
+      final isRegistering = state.uri.path == '/register';
+
       if (!authState.isInitialized) {
-        return null;
+        return isLoggingIn || isRegistering ? null : '/login';
       }
 
       final isAuth = authState.isAuthenticated;
-      final isLoggingIn = state.uri.path == '/login';
-      final isRegistering = state.uri.path == '/register';
 
       if (!isAuth && !isLoggingIn && !isRegistering) {
         return '/login';
