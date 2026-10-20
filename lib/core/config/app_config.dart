@@ -2,10 +2,13 @@ class AppConfig {
   static const String appName = 'TaskFlow';
   static const String appVersion = '1.0.0';
 
-  /// Default API base URL points to live cloud API
+  /// Default API base URL points to local backend connected to Neon
   static String get defaultBaseUrl {
-    return productionBaseUrl;
+    return localBaseUrl;
   }
+
+  /// Local API endpoint connected to Neon PostgreSQL
+  static const String localBaseUrl = 'http://localhost:3001/api';
 
   /// Cloud API endpoint for production
   static const String productionBaseUrl = 'https://taskflow-nestjs-api.vercel.app/api';

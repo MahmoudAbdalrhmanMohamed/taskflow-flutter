@@ -245,15 +245,15 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                     children: [
                       ActionChip(
                         avatar: const Icon(Icons.computer_rounded, size: 16),
-                        label: const Text('Localhost (3000)'),
+                        label: const Text('Localhost (3001)'),
                         onPressed: () =>
-                            _changeBackendUrl('http://localhost:3000/api'),
+                            _changeBackendUrl(AppConfig.localBaseUrl),
                       ),
                       ActionChip(
                         avatar: const Icon(Icons.phone_android_rounded, size: 16),
-                        label: const Text('Android (10.0.2.2)'),
+                        label: const Text('Android (10.0.2.2:3001)'),
                         onPressed: () =>
-                            _changeBackendUrl('http://10.0.2.2:3000/api'),
+                            _changeBackendUrl('http://10.0.2.2:3001/api'),
                       ),
                       ActionChip(
                         avatar: const Icon(Icons.public_rounded, size: 16),
