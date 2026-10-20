@@ -109,12 +109,21 @@ class AuthNotifier extends StateNotifier<AuthState> {
     } catch (e) {
       final rawError = e.toString();
       String userFriendlyMessage = rawError;
-      if (rawError.contains('localhost:5432') || rawError.contains('reach database server')) {
+      if (rawError.contains('connection pool') ||
+          rawError.contains('Timed out fetching') ||
+          rawError.contains('prisma') ||
+          rawError.contains('P1001') ||
+          rawError.contains('P1002')) {
+        userFriendlyMessage =
+            'Database was waking up from sleep. The connection is now active—please click Sign In again!';
+      } else if (rawError.contains('localhost:5432') || rawError.contains('reach database server')) {
         userFriendlyMessage =
             'Database is not connected on Vercel. Please set DATABASE_URL to your Neon connection string in Vercel Settings.';
       } else if (rawError.contains('Cannot connect to server')) {
         userFriendlyMessage =
             'Cannot reach API server. Check connection or launch in Offline Demo Mode.';
+      } else if (rawError.contains('Invalid email or password')) {
+        userFriendlyMessage = 'Invalid email or password. Please verify your credentials.';
       }
       state = state.copyWith(
         isLoading: false,
@@ -168,9 +177,21 @@ class AuthNotifier extends StateNotifier<AuthState> {
       );
       return true;
     } catch (e) {
+      final rawError = e.toString();
+      String userFriendlyMessage = rawError;
+      if (rawError.contains('connection pool') ||
+          rawError.contains('Timed out fetching') ||
+          rawError.contains('prisma') ||
+          rawError.contains('P1001') ||
+          rawError.contains('P1002')) {
+        userFriendlyMessage =
+            'Database was waking up from sleep. The connection is now active—please try registering again.';
+      } else if (rawError.contains('already exists')) {
+        userFriendlyMessage = 'An account with this email already exists. Please sign in instead.';
+      }
       state = state.copyWith(
         isLoading: false,
-        errorMessage: e.toString(),
+        errorMessage: userFriendlyMessage,
       );
       return false;
     }
