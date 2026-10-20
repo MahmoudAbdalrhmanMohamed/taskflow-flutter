@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/constants/app_colors.dart';
+import '../../core/widgets/taskflow_logo.dart';
 
 class AppScaffold extends StatelessWidget {
   final Widget child;
@@ -54,19 +55,10 @@ class AppScaffold extends StatelessWidget {
                   selectedIndex: currentIndex,
                   onDestinationSelected: (index) => _onItemTapped(index, context),
                   labelType: NavigationRailLabelType.all,
-                  leading: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        gradient: AppColors.primaryGradient,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: const Icon(
-                        Icons.check_circle_outline_rounded,
-                        color: Colors.white,
-                        size: 24,
-                      ),
+                  leading: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: TaskFlowLogo(
+                      size: 38,
                     ),
                   ),
                   destinations: const [
