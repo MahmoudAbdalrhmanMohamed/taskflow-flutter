@@ -8,8 +8,8 @@ Welcome to the TaskFlow multi-platform testing package. Both the Android APK and
 
 | Platform | File | Size | Description |
 | :--- | :--- | :--- | :--- |
-| **Android** | `TaskFlow-v1.0.0.apk` | ~53 MB | Standalone Release APK for Android 5.0+ devices & emulators |
-| **Windows** | `TaskFlow-Windows-v1.0.0.zip` | ~12 MB | Complete self-contained desktop bundle with `TaskFlow.exe` |
+| **Android** | `TaskFlow-v1.0.1.apk` *(or v1.0.0)* | ~53 MB | Standalone Release APK with custom TaskFlow app icon & cloud API access |
+| **Windows** | `TaskFlow-Windows-v1.0.1.zip` *(or v1.0.0)* | ~12 MB | Complete self-contained desktop bundle with `TaskFlow.exe` |
 
 ---
 
@@ -26,7 +26,7 @@ You can use the pre-configured demo account or register a fresh account:
 
 ## 📱 Android Installation Instructions
 
-1. Transfer `TaskFlow-v1.0.0.apk` to your Android device (via USB, Google Drive, Telegram, WhatsApp, or browser download).
+1. Transfer `TaskFlow-v1.0.1.apk` to your Android device (via USB, Google Drive, Telegram, WhatsApp, or browser download).
 2. Tap the APK file to install.
 3. **Security Note:** Since this is a direct release build not yet published on Google Play:
    - If prompted **"Install unknown apps"**, toggle **"Allow from this source"**.
