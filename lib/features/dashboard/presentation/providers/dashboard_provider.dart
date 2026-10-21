@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:taskflow/features/auth/presentation/providers/auth_provider.dart';
-import '../../../../core/constants/demo_data.dart';
 import '../../data/models/dashboard_stats_model.dart';
 import '../../data/repositories/dashboard_repository.dart';
 
@@ -47,7 +46,7 @@ class DashboardNotifier extends StateNotifier<DashboardState> {
       state = state.copyWith(stats: stats, isLoading: false);
     } catch (e) {
       state = state.copyWith(
-        stats: state.stats ?? DemoData.stats,
+        stats: state.stats ?? DashboardStatsModel.empty(),
         isLoading: false,
         error: e.toString(),
       );

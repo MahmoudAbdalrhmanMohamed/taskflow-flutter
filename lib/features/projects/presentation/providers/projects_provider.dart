@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:taskflow/features/auth/presentation/providers/auth_provider.dart';
-import '../../../../core/constants/demo_data.dart';
 import '../../data/models/project_model.dart';
 import '../../data/repositories/projects_repository.dart';
 
@@ -47,7 +46,7 @@ class ProjectsNotifier extends StateNotifier<ProjectsState> {
       state = state.copyWith(projects: projects, isLoading: false);
     } catch (e) {
       state = state.copyWith(
-        projects: state.projects.isNotEmpty ? state.projects : DemoData.projects,
+        projects: state.projects,
         isLoading: false,
         error: e.toString(),
       );

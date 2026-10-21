@@ -162,4 +162,20 @@ class DashboardStatsModel {
           .toList(),
     );
   }
+
+  factory DashboardStatsModel.empty() {
+    return DashboardStatsModel(
+      totalProjects: 0,
+      totalTasks: 0,
+      completedTasks: 0,
+      inProgressTasks: 0,
+      todoTasks: 0,
+      overdueTasks: 0,
+      completionRate: 0,
+      tasksByPriority: const {'low': 0, 'medium': 0, 'high': 0},
+      upcomingDeadlines: const [],
+      recentActivities: const [],
+      projectSummaries: const [],
+    );
+  }
 }

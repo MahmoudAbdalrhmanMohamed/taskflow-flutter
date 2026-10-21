@@ -175,11 +175,10 @@ class _TasksListScreenState extends ConsumerState<TasksListScreen> {
                         filter.projectId == null
                             ? 'All Projects'
                             : (projectsState.projects
-                                    .firstWhere(
-                                      (p) => p.id == filter.projectId,
-                                      orElse: () => projectsState.projects.first,
-                                    )
-                                    .name),
+                                    .where((p) => p.id == filter.projectId)
+                                    .map((p) => p.name)
+                                    .firstOrNull ??
+                                'Project'),
                       ),
                       deleteIcon: filter.projectId != null ? const Icon(Icons.close, size: 14) : null,
                       onDeleted: filter.projectId != null
