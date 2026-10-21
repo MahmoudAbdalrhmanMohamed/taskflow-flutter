@@ -48,6 +48,13 @@ app.*.map.json
 .widget_preview/
 
 # Nested Backend Repo
+backend/
+
+# Distribution Binaries
+*.apk
+*.zip
+release_distribution/*.apk
+release_distribution/*.zip
 /backend/
 
 # Local Interview & Presentation Prep
